@@ -40,7 +40,12 @@ slack.on('error', function(error) {
 
 slack.on('message', function(message) {
     var channel = slack.getChannelGroupOrDMByID(message.channel),
-        msg = message.text,
+        user = slack.getUserByID(message.user);
+    if (user.user_name === BOT_NAME) {
+        return;
+    }
+
+    var msg = message.text,
         IMG_MSG_REGEX = new RegExp('^' + BOT_NAME + '( image| img| animate)( me)? (.*)'),
         imgMatch = msg.match(IMG_MSG_REGEX);
 
