@@ -41,7 +41,7 @@ slack.on('error', function(error) {
 slack.on('message', function(message) {
     var channel = slack.getChannelGroupOrDMByID(message.channel),
         user = slack.getUserByID(message.user);
-    if (user.user_name === BOT_NAME) {
+    if (!user) {
         return;
     }
 
