@@ -19,7 +19,7 @@ var Slack = require('slack-client'),
     job = new CronJob({
       cronTime: CRON_TIME,
       onTick: function() {
-         var channel = slack.getChannelByName('random'),
+         var channel = slack.getChannelByName('general'),
              cronMessage = CRON_MESSAGE + '\n' + CONF_LINK;
 
          channel.send(cronMessage);
