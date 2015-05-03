@@ -1,0 +1,33 @@
+{
+  "name": "node-slackbot",
+  "version": "0.0.1",
+  "description": "A simple slackbot written in NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'no test'",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khanh-nguyen/node-slackbot.git"
+  },
+  "engines": {
+    "node": "0.12.2"
+  },
+  "keywords": [
+    "slack",
+    "bot",
+    "nodejs"
+  ],
+  "author": "Khanh.Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/khanh-nguyen/node-slackbot/issues"
+  },
+  "homepage": "https://github.com/khanh-nguyen/node-slackbot#readme",
+  "dependencies": {
+    "bunyan": "^1.3.5",
+    "cron": "^1.0.9",
+    "slack-client": "^1.4.0"
+  }
+}
