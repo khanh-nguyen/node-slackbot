@@ -4,34 +4,20 @@ var Slack = require('slack-client'),
     bunyan = require('bunyan'),
     log = bunyan.createLogger({name: 'slackbot'}),
     imageSearch = require('./lib/image-search'),
+    cronJob = require('./lib/cron-job'),
 
     // constants
     constants = require('./lib/constants'),
     BOT_NAME = constants.BOT_NAME,
-    CRON_MESSAGE = constants.CRON_MESSAGE,
-    CRON_TIME = constants.CRON_TIME,
 
     // credential info
     TOKEN = process.env.SLACK_TOKEN,
-    CONF_LINK = process.env.CONF_LINK,
 
     // create slack client and cron job
-    slack = new Slack(TOKEN, true, true),
-    CronJob = require('cron').CronJob,
-    job = new CronJob({
-      cronTime: CRON_TIME,
-      onTick: function() {
-         var channel = slack.getChannelByName('general'),
-             cronMessage = CRON_MESSAGE + '\n' + CONF_LINK;
-
-         channel.send(cronMessage);
-      },
-      start: false,
-      timeZone: "America/New_York"
-    });
+    slack = new Slack(TOKEN, true, true);
     
 slack.on('open', function() {
-    job.start(); 
+    cronJob.start();
 });
 
 slack.on('error', function(error) {
