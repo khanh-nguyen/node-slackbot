@@ -4,7 +4,6 @@ var Slack = require('slack-client'),
     bunyan = require('bunyan'),
     log = bunyan.createLogger({name: 'slackbot'}),
     imageSearch = require('./lib/image-search'),
-    cronJob = require('./lib/cron-job'),
 
     // constants
     constants = require('./lib/constants'),
@@ -14,7 +13,8 @@ var Slack = require('slack-client'),
     TOKEN = process.env.SLACK_TOKEN,
 
     // create slack client and cron job
-    slack = new Slack(TOKEN, true, true);
+    slack = new Slack(TOKEN, true, true),
+    cronJob = require('./lib/cron-job')(slack);
     
 slack.on('open', function() {
     cronJob.start();
