@@ -4,6 +4,7 @@ var Slack = require('slack-client'),
     bunyan = require('bunyan'),
     log = bunyan.createLogger({name: 'slackbot'}),
     imageSearch = require('./lib/image-search'),
+    greeting = require('./lib/greeting'),
 
     // constants
     constants = require('./lib/constants'),
@@ -42,6 +43,12 @@ slack.on('message', function(message) {
                 channel.send(img);
             }
         });
+    }
+});
+
+slack.on('userChange', function(user) {
+    if (!user.deleted) {
+        return greeting(slack, user.name)
     }
 });
 
