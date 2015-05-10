@@ -1,6 +1,6 @@
 {
   "name": "node-slackbot",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A simple slackbot written in NodeJS",
   "main": "index.js",
   "scripts": {
